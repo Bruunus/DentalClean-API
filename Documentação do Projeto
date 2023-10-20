@@ -62,7 +62,50 @@ Data do documento: 22/07/2023
 
  
  
+------------------Novo procedimento de Backup
+
+Lembrando que a partir do dia 20/10/2023 o projeto não será mais 
+salvo no Drive mais irá direto para o repositório Git. Segue os detalhes
+
+
+1.  Quando você não tem o repositório clonado ao do GitHub:
+    
+    Quando atualizou o projeto em um local e não atualizou no Github e voce não tem um clone do projeto, 
+    é necessário então que voce adicione o repositório do Github para subir as novas modificações, seguindo os passos:
+            
+    1.  git init    (caso o projeto que voce tem não tenha o git ainda)
+    2.  git remote add origin https://github.com/Bruunus/DentalClean-API
+    3.  git add .
+    4.  git commit -m "Mensagem sobre as novas modificações"
+    5.  git push origin master
+
+
+
+2.  Quando você não tem o projeto na máquina e o Github tem o projeto atualizado
+        
+    Quando o projeto estiver atualizado no Github basta somente clonar o repositório que faz o donwload e jogar em uma 
+    pasta a sua escolha.
+
+
+            
+    1.  Selecione um local de trabalho
+    2.  Abra o terminal e realiza o clone do repositório
+        
+        git clone https://github.com/Bruunus/DentalClean-API
+        
+
+    3.  No final quando terminar de modificar o projeto é necessário comitar e fazer o push para atualizar a sua modificação 
+    no Github então execute:
+
+
+        1.  git add .
+        2.  git commit -m "Sua Mensagem de Commit"
+        3.  git push origin master
  
+
+
+
+
  
  
  

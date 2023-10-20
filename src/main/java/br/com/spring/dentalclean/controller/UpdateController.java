@@ -42,7 +42,7 @@ public class UpdateController {
 	 * Atualiza um registro localizando por id e que o paciente estaja cadastrado no sistema.
 	 * @param id
 	 * @param pacienteDTO
-	 * @return Mensagem HTTP 200 com os dados atualizados
+	 * @return Mensagem HTTP 200 com os dados atualizado!
 	 */
 	@PutMapping("/atualizar/cadastro/dentista")
 	public ResponseEntity<DentistaDTO> putDataDentista(@RequestParam Integer cro, @RequestBody DentistaDTO dentistaDTOHttp) {
