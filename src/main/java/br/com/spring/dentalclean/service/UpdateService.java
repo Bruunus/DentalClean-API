@@ -131,13 +131,14 @@ public class UpdateService {
 	 * @param dentistaDTOHttp
 	 * @return Objeto DTO do tipo DentistaDTO
 	 */
-	public DentistaDTO updateDentista(Long id, DentistaDTO dentistaDTOHttp) {
+	public DentistaDTO updateDentista(Integer cro, DentistaDTO dentistaDTOHttp) {
 		
 		dentistaDTO = new DentistaDTO();
 		
-		Dentista dentista = detistaRepository.findByIdAndNaoDeletado(id, true)
+		Dentista dentista = detistaRepository.findByCroAndNaoDeletado(cro, true)
 		        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Registro de dentista não encontrado. Pode ser alterado ou deletado."));
 		
+		dentista.setCro(dentistaDTOHttp.getCro());
  
 		dentista.setNomeCompleto(dentistaDTOHttp.getNomeCompleto());
 		dentista.setRua(dentistaDTOHttp.getRua());
@@ -150,7 +151,7 @@ public class UpdateService {
 		dentista.setTelefoneResidencial(dentistaDTOHttp.getTelefoneResidencial());
 		dentista.setTelefoneCelular(dentistaDTOHttp.getTelefoneCelular());
 		dentista.setEspecialidade(dentistaDTOHttp.getEspecialidade());
-		dentista.setCRO(dentistaDTOHttp.getCRO());
+		
 		dentista.setCpf(dentistaDTOHttp.getCpf());
 		
 		
@@ -168,7 +169,7 @@ public class UpdateService {
 		dentistaDTO.setTelefoneResidencial(dadosAtualizado.getTelefoneResidencial());
 		dentistaDTO.setTelefoneCelular(dadosAtualizado.getTelefoneCelular());
 		dentistaDTO.setEspecialidade(dadosAtualizado.getEspecialidade());
-		dentistaDTO.setCRO(dadosAtualizado.getCRO());
+		dentistaDTO.setCro(dadosAtualizado.getCro());
 		dentistaDTO.setCpf(dadosAtualizado.getCpf());
 		
 				

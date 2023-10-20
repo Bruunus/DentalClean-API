@@ -17,7 +17,7 @@ import br.com.spring.dentalclean.dto.UsuarioDTO;
 import br.com.spring.dentalclean.service.ListarService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ExibirDadosController {
 
 	@Autowired

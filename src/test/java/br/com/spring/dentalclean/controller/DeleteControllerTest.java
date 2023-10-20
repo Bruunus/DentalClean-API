@@ -170,17 +170,17 @@ public class DeleteControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void deveDeletarUmDentistaPorUmaListaDeIdsEmModoDeleteAutentico() throws Exception {
+	public void deveDeletarUmDentistaPorUmaListaDeCroEmModoDeleteAutentico() throws Exception {
 		
 		URI url = new URI("/api/delete_aut/dentista");
 		
-		List<Long> list = new ArrayList<>();
+		List<Integer> list = new ArrayList<>();
 		
-		list.add((long) 10);
+		list.add((Integer) 7425);
 		
 		postman.perform(delete(url)
 				.contentType(MediaType.APPLICATION_JSON)
-				.param("ids", list.stream().map(Object::toString).collect(Collectors.joining(","))))
+				.param("cros", list.stream().map(Object::toString).collect(Collectors.joining(","))))
 		.andExpect(MockMvcResultMatchers
 				.status()
 				.is(200));			

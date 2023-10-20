@@ -15,7 +15,7 @@ import br.com.spring.dentalclean.dto.UsuarioDTO;
 import br.com.spring.dentalclean.service.UpdateService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UpdateController {
 
 	@Autowired
@@ -45,9 +45,9 @@ public class UpdateController {
 	 * @return Mensagem HTTP 200 com os dados atualizados
 	 */
 	@PutMapping("/atualizar/cadastro/dentista")
-	public ResponseEntity<DentistaDTO> putDataDentista(@RequestParam Long id, @RequestBody DentistaDTO dentistaDTOHttp) {
+	public ResponseEntity<DentistaDTO> putDataDentista(@RequestParam Integer cro, @RequestBody DentistaDTO dentistaDTOHttp) {
 		
-		DentistaDTO updateDentista = updateService.updateDentista(id, dentistaDTOHttp);
+		DentistaDTO updateDentista = updateService.updateDentista(cro, dentistaDTOHttp);
 		
 		return ResponseEntity.ok(updateDentista);
 	}

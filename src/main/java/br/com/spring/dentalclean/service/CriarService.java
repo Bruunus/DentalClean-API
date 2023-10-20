@@ -16,6 +16,8 @@ import br.com.spring.dentalclean.repository.UsuarioRepository;
 @Service
 public class CriarService {
 	
+	private static int logCount = 0;
+	
 	@Autowired
 	private PacienteRepository pacienteRepository;
 
@@ -26,7 +28,7 @@ public class CriarService {
 	private UsuarioRepository usuarioRepository;
 
  
-	
+	private static int logSession() { return logCount++; }
 	
 	
 	/**
@@ -38,6 +40,7 @@ public class CriarService {
 	 * @return Objeto do tipo PacienteDTO
 	 */
 	public PacienteDTO cadastrarPaciente(PacienteDTO pacienteDTO) {		
+		
 		
 		
 		Paciente cadastro = new Paciente();
@@ -74,6 +77,8 @@ public class CriarService {
 		
 		pacienteRepository.save(cadastro);
 		
+		System.out.println("Log-server: Serviço requisitado "+CriarService.logSession()+"° vez(es)");
+		System.out.println("Log-server: Paciente cadastrado com sucesso em "+java.time.LocalDateTime.now());;
 		
 		return pacienteDTO;
 	}
@@ -105,8 +110,8 @@ public class CriarService {
 		cadastro.setDataNascimento(cadastroDentistaDTO.getDataNascimento());
 		cadastro.setTelefoneResidencial(cadastroDentistaDTO.getTelefoneResidencial());
 		cadastro.setTelefoneCelular(cadastroDentistaDTO.getTelefoneCelular());
-		cadastro.setEspecialidade(cadastroDentistaDTO.getEspecialidade());
-		cadastro.setCRO(cadastroDentistaDTO.getCRO());
+		cadastro.setCro(cadastroDentistaDTO.getCro());
+		cadastro.setEspecialidade(cadastroDentistaDTO.getEspecialidade());		
 		cadastro.setCpf(cadastroDentistaDTO.getCpf());
 		
 		dentistaRepository.save(cadastro);

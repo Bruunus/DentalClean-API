@@ -12,9 +12,13 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "dentista")
 public class Dentista {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
+	private Long id;
+	
+	@Column(name = "cro", columnDefinition = "INT(4)")
+	private Integer cro;
 	
 	@NotNull
 	private Boolean naoDeletado;  
@@ -45,19 +49,13 @@ public class Dentista {
 
 	private String especialidade;
 
-	private String CRO;
+	
 
 	private String cpf;
 	
 	
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long codigo_id) {
-		this.id = codigo_id;
-	}
+	 
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -147,12 +145,12 @@ public class Dentista {
 		this.especialidade = especialidade;
 	}
 
-	public String getCRO() {
-		return CRO;
+	public Integer getCro() {
+		return cro;
 	}
 
-	public void setCRO(String cRO) {
-		CRO = cRO;
+	public void setCro(Integer cro) {
+		this.cro = cro;
 	}
 
 	public String getCpf() {
@@ -175,12 +173,10 @@ public class Dentista {
 	@Override
 	public String toString() {
 		 
-		return "ID do banco (" + this.id+")";
+		return "ID do banco (" + this.cro+")";
 	}
 
-	public Dentista orElseThrow(RuntimeException object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	 
 
 }

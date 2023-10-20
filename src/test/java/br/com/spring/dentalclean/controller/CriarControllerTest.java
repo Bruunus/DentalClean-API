@@ -100,7 +100,7 @@ public class CriarControllerTest {
 				+ "\"telefoneResidencial\" : \"(11) 3657-4512\","
 				+ "\"telefoneCelular\" : \"(11) 98745-1548\","	
 				+ "\"especialidade\" : \"Ortodontia e ortopedia facial\","
-				+ "\"cro\" : \"CRO-5678\","
+				+ "\"cro\" : \"5678\","
 				+ "\"cpf\" : \"468.941.058-42\""
 				+"}";	
 		

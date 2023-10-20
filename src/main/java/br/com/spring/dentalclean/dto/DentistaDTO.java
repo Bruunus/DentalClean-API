@@ -2,9 +2,14 @@ package br.com.spring.dentalclean.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class DentistaDTO {
 	
+	@JsonIgnore
 	private Long id;
+	
+	private Integer cro;
 
 	private String nomeCompleto;
 
@@ -28,7 +33,7 @@ public class DentistaDTO {
 
 	private String especialidade;
 
-	private String CRO;
+	
 
 	private String cpf;
 	
@@ -128,12 +133,12 @@ public class DentistaDTO {
 		this.especialidade = especialidade;
 	}
 
-	public String getCRO() {
-		return CRO;
+	public Integer getCro() {
+		return cro;
 	}
 
-	public void setCRO(String cRO) {
-		CRO = cRO;
+	public void setCro(Integer cro) {
+		this.cro = cro;
 	}
 
 	public String getCpf() {

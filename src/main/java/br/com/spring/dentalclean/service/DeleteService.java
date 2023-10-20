@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,14 +88,14 @@ public class DeleteService {
 	 * 
 	 * Realiza update
 	 * 
-	 * @param id
+	 * @param cro
 	 * @return
 	 */
-	public DentistaDTO deleteDentistaPorIdFalse(List<Long> id) {
+	public DentistaDTO deleteDentistaPorCroFalse(List<Integer> cro) {
 
-		List<Long> idsHttp = id;
+		List<Integer> idsHttp = cro;
 
-		Iterable<Dentista> loadRegistersDatabase = dentistaRepository.findAllById(idsHttp);
+		Iterable<Dentista> loadRegistersDatabase = dentistaRepository.findByCroAndNaoDeletado(idsHttp, true);
 
 		loadRegistersDatabase.forEach(data -> {
 			System.out.println(data);
@@ -185,20 +187,21 @@ public class DeleteService {
 	/**
 	 * Deleta um dentista de forma autentica por id, os registros serão excluídos
 	 * permanentemente.
-	 * @param id
+	 * @param cro
 	 * @return
 	 */
-	public Boolean deleteDentistaAutenticoPorId(List<Long> id) {
+	@Transactional
+	public Boolean deleteDentistaAutenticoPorId(List<Integer> cro) {
 		
 		
 		try {
 
-			List<Long> idsHttp = id;
+			List<Integer> croHttp = cro;
 
-			idsHttp.forEach(ids -> {
-				Optional<Dentista> idsBanco = dentistaRepository.findById(ids);
+			croHttp.forEach(cros -> {
+				Optional<Dentista> idsBanco = dentistaRepository.findByCro(cros);
 				if (idsBanco.isPresent()) {
-					dentistaRepository.deleteById(ids);
+					dentistaRepository.deleteByCro(cros);
 				}
 			});
 
@@ -266,16 +269,16 @@ public class DeleteService {
 	 * @param id
 	 * @return Boolean
 	 */
-	public Boolean validadorDentistaDeletadoFalse(List<Long> idHttp) {
+	public Boolean validadorDentistaDeletadoFalse(List<Integer> idHttp) {
 
 		 
-		List<Long> printList = idHttp;
+		List<Integer> printList = idHttp;
 		 
-		List<Dentista> list = dentistaRepository.queryFindByIdAndNaoDeletado(printList, false);
+		List<Dentista> list = dentistaRepository.queryFindByCroAndNaoDeletado(printList, false);
 
 		// operação para validar se os dados são iguais
 		boolean valoresIguais = list.stream()
-				.map(Dentista::getId)
+				.map(Dentista::getCro)
 				.collect(Collectors.toList())
 				.equals(printList);
 

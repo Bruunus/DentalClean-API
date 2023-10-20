@@ -9,7 +9,7 @@ import br.com.spring.dentalclean.dto.UsuarioDTO;
 import br.com.spring.dentalclean.service.CriarService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CriarController {	
 	
 	@Autowired

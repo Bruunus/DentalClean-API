@@ -102,7 +102,7 @@ public class ListarService {
 		destistas.forEach(dentista -> {
 			dentistaDTO = new DentistaDTO();
 			
-			dentistaDTO.setId(dentista.getId());
+			dentistaDTO.setCro(dentista.getCro());
 			dentistaDTO.setNomeCompleto(dentista.getNomeCompleto());
 			dentistaDTO.setRua(dentista.getRua());
 			dentistaDTO.setNumero(dentista.getNumero());
@@ -113,8 +113,7 @@ public class ListarService {
 			dentistaDTO.setDataNascimento(dentista.getDataNascimento());
 			dentistaDTO.setTelefoneResidencial(dentista.getTelefoneResidencial());
 			dentistaDTO.setTelefoneCelular(dentista.getTelefoneCelular());
-			dentistaDTO.setEspecialidade(dentista.getEspecialidade());
-			dentistaDTO.setCRO(dentista.getCRO());
+			dentistaDTO.setEspecialidade(dentista.getEspecialidade());			
 			dentistaDTO.setCpf(dentista.getCpf());
 			
 			listaDeDados.add(dentistaDTO);
@@ -240,7 +239,7 @@ public class ListarService {
 				dentistaDTO.setTelefoneResidencial(data.getTelefoneResidencial());
 				dentistaDTO.setTelefoneCelular(data.getTelefoneCelular());
 				dentistaDTO.setEspecialidade(data.getEspecialidade());
-				dentistaDTO.setCRO(data.getCRO());
+				dentistaDTO.setCro(data.getCro());
 				dentistaDTO.setCpf(data.getCpf());
 
 				dentistaDTOList.add(dentistaDTO);
