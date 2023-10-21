@@ -106,7 +106,7 @@ public class CriarService {
 		cadastro.setTelefoneResidencial(cadastroDentistaDTO.getTelefoneResidencial());
 		cadastro.setTelefoneCelular(cadastroDentistaDTO.getTelefoneCelular());
 		cadastro.setEspecialidade(cadastroDentistaDTO.getEspecialidade());
-		cadastro.setCRO(cadastroDentistaDTO.getCRO());
+		cadastro.setCro(cadastroDentistaDTO.getCro());
 		cadastro.setCpf(cadastroDentistaDTO.getCpf());
 		
 		dentistaRepository.save(cadastro);

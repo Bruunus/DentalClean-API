@@ -19,20 +19,20 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 	/**
 	 * Busca de um dentista pelo id
 	 */
-	Optional<Dentista> findById(Long id);
+	Optional<Dentista> findByCro(Integer cro);
 	
 	
 	
 	/**
-	 * Busca avançada por parâmetro usanto JPQL. Retorna todos os registros de dentistas que tenha
-	 * o id passado e que o campo 'naoDeletado' tenha um booleano verdadeiro ou falso.
+	 * Busca avançada por parâmetro usanto JPQL. Retorna o registro do dentista que tenha
+	 * o CRO passado e que o campo 'naoDeletado' tenha um booleano verdadeiro ou falso.
 	 * 
 	 * @param ids
 	 * @param naoDeletado
 	 * @return
 	 */
-	@Query("SELECT d FROM dentista d WHERE d.id IN :id AND d.naoDeletado = :naoDeletado")
-    List<Dentista> queryFindByIdAndNaoDeletado(@Param("id") List<Long> ids, @Param("naoDeletado") Boolean naoDeletado);
+	@Query("SELECT d FROM dentista d WHERE d.cro IN :cro AND d.naoDeletado = :naoDeletado")
+    List<Dentista> queryFindByCroAndNaoDeletado(@Param("cro") List<Integer> cros, @Param("naoDeletado") Boolean naoDeletado);
 
 	
 	
@@ -47,7 +47,7 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 	
 
 	/**
-	 * Busca todos os registro pela String passade e que devidamente cadastrado no sistema.
+	 * Busca todos os registro pelo nome completo passade e que devidamente cadastrado no sistema.
 	 * @param nome
 	 * @param b
 	 * @return
@@ -57,12 +57,34 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 
 
 	/**
-	 * Busca dentista pelo id e que esteja devidamente cadastrado no sistema.
-	 * @param id
+	 * Busca dentista pelo CRO e que esteja devidamente cadastrado no sistema.
+	 * @param cro
 	 * @param b
 	 * @return
 	 */
-	Optional<Dentista> findByIdAndNaoDeletado(Long id, boolean b);
+	Optional<Dentista> findByCroAndNaoDeletado(Integer cro, boolean b);
+	
+	
+	
+	/**
+	 * Busca 
+	 * @param cro
+	 * @param b
+	 * @return
+	 */
+	Iterable<Dentista> findByCroAndNaoDeletado(List<Integer> cro, boolean b);
+
+
+
+	void deleteByCro(Integer cros);
+
+
+
+
+
+
+
+	 
 
 }
 

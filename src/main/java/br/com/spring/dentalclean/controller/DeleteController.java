@@ -83,15 +83,15 @@ public class DeleteController {
 	 * Invocado o método para validar se o dentista realmente foi deletado e, o 
 	 * retorno http depende dessa validação.
 	 * 
-	 * @param id
+	 * @param cro
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/api/delete/dentista")
-	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@RequestParam("ids") List<Long> id) {
+	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@RequestParam("cros") List<Integer> cro) {
 		
-		deleteService.deleteDentistaPorIdFalse(id);
+		deleteService.deleteDentistaPorCroFalse(cro);
 		
-		Boolean dentistaDeletado = deleteService.validadorDentistaDeletadoFalse(id);
+		Boolean dentistaDeletado = deleteService.validadorDentistaDeletadoFalse(cro);
 		
 		if (dentistaDeletado) {
 			return ResponseEntity.ok().build();
@@ -111,9 +111,9 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/api/delete_aut/dentista")
-	public ResponseEntity<DentistaDTO> deleteAutenticoIdDentista(@RequestParam("ids") List<Long> id) {
+	public ResponseEntity<DentistaDTO> deleteAutenticoIdDentista(@RequestParam("cros") List<Integer> cros) {
 		
-		Boolean deleteDentistaAutenticoPorId = deleteService.deleteDentistaAutenticoPorId(id);
+		Boolean deleteDentistaAutenticoPorId = deleteService.deleteDentistaAutenticoPorId(cros);
 		
 		if (deleteDentistaAutenticoPorId) {
 			return ResponseEntity.ok().build();

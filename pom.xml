@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.spring</groupId>
 	<artifactId>dentalclean</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>DentalClean</name>
 	<description>Projeto web com spring dental clean</description>
 	<properties>
