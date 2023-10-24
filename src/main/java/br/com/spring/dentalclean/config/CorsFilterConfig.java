@@ -29,6 +29,7 @@ public class CorsFilterConfig {
         CorsFilter corsFilter = new CorsFilter(source);
         FilterRegistrationBean<CorsFilter> filterRegistrationBean = new FilterRegistrationBean<>(corsFilter);
         filterRegistrationBean.setOrder(0); 
+        System.out.println("");
         
         return filterRegistrationBean;
     }
