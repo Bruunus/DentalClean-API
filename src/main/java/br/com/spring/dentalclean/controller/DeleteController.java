@@ -17,8 +17,12 @@ import br.com.spring.dentalclean.dto.UsuarioDTO;
 import br.com.spring.dentalclean.service.DeleteService;
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping("")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+=======
+@CrossOrigin(origins = "*")
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 public class DeleteController {
 	
 	
@@ -86,8 +90,13 @@ public class DeleteController {
 	 * @param cro
 	 * @return Mensagem HTTP
 	 */
+	
 	@DeleteMapping("/api/delete/dentista")
+<<<<<<< HEAD
 	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@RequestParam("cros") List<Integer> cro) {
+=======
+	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@RequestParam("cro") Integer cro) {
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 		
 		deleteService.deleteDentistaPorCroFalse(cro);
 		
@@ -140,11 +149,11 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/api/delete/usuario")
-	public ResponseEntity<UsuarioDTO> deleteUserFalse(@RequestParam("ids") List<Long> id) {
+	public ResponseEntity<UsuarioDTO> deleteUserFalse(@RequestParam("id") Long id) {
 		
 		deleteService.deleteUsuarioPorIdFalse(id);
 		
-		Boolean deleteFalsoValidadorUsuario = deleteService.validadedeleteFalsoUsuario(id);
+		Boolean deleteFalsoValidadorUsuario = deleteService.validadorUsuarioDeletadoFalse(id) ;
 			
 		if (deleteFalsoValidadorUsuario) {
 			return ResponseEntity.ok().build();

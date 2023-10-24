@@ -33,7 +33,11 @@ public class DentistaDTO {
 
 	private String especialidade;
 
+<<<<<<< HEAD
 	
+=======
+	private Integer cro;
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
 	private String cpf;
 	

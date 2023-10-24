@@ -1,8 +1,13 @@
 package br.com.spring.dentalclean.dto;
 
+import java.util.Optional;
+
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.com.spring.dentalclean.model.Dentista;
+import br.com.spring.dentalclean.model.Usuario;
 
 public class UsuarioDTO {
 	

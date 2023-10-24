@@ -33,6 +33,8 @@ public class DeleteService {
 	UsuarioRepository usuarioRepository;
 
 	Paciente paciente;
+	
+	Usuario user = new Usuario();
 
 	List<Paciente> optional;
 
@@ -91,24 +93,23 @@ public class DeleteService {
 	 * @param cro
 	 * @return
 	 */
+<<<<<<< HEAD
 	public DentistaDTO deleteDentistaPorCroFalse(List<Integer> cro) {
 
 		List<Integer> idsHttp = cro;
 
 		Iterable<Dentista> loadRegistersDatabase = dentistaRepository.findByCroAndNaoDeletado(idsHttp, true);
+=======
+	public DentistaDTO deleteDentistaPorCroFalse(Integer cro) {
 
-		loadRegistersDatabase.forEach(data -> {
-			System.out.println(data);
-			data.setNaoDeletado(false);
-			dentistaRepository.save(data);
-		});
+		Dentista dentist = new Dentista();
 
-		boolean hasNonDeleted = StreamSupport.stream(loadRegistersDatabase.spliterator(), false)
-				.anyMatch(dentista -> dentista.getNaoDeletado());
+		Optional<Dentista> findDentist = dentistaRepository.findByCroAndNaoDeletado(cro, true);
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
-		// Se tiver elemento como 'true'
-		if (hasNonDeleted) {
-			throw new RuntimeException("Erro ao deletar alguns registros.");
+		if(findDentist.isPresent()) {
+			dentist.setNaoDeletado(false);
+			dentistaRepository.save(dentist);
 		}
 
 		return dentistaDTO;
@@ -128,24 +129,14 @@ public class DeleteService {
 	 * @param id
 	 * @return
 	 */
-	public UsuarioDTO deleteUsuarioPorIdFalse(List<Long> id) {
-		
-		List<Long> idsHttp = id;
+	public UsuarioDTO deleteUsuarioPorIdFalse(Long id) {		 
 
-		Iterable<Usuario> loadRegistersDatabase = usuarioRepository.findAllById(idsHttp);
+		Optional<Usuario> findUser = usuarioRepository.findById(id);
 
-		loadRegistersDatabase.forEach(data -> {
-			System.out.println(data);
-			data.setNaoDeletado(false);
-			usuarioRepository.save(data);
-		});
-
-		boolean hasNonDeleted = StreamSupport.stream(loadRegistersDatabase.spliterator(), false)
-				.anyMatch(usuario -> usuario.getNaoDeletado());
-
-		// Se tiver elemento como 'true'
-		if (hasNonDeleted) {
-			throw new RuntimeException("Erro ao deletar alguns registros.");
+		if(findUser.isPresent()) {
+			user.setNaoDeletado(false);
+			usuarioRepository.save(user);
+			
 		}
 		
 		return usuarioDTO;
@@ -259,6 +250,7 @@ public class DeleteService {
 
 	}
 
+<<<<<<< HEAD
 	
 	
 	
@@ -290,60 +282,42 @@ public class DeleteService {
 				System.out.print("" + i + " ");
 			});
 			System.out.println("]");
+=======
 
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
+
+	public Boolean validadorDentistaDeletadoFalse(Integer cro) {
+		
+		Optional<Dentista> findDentist = dentistaRepository.findByCroAndNaoDeletado(cro, false);
+		
+		if(findDentist.isPresent()) {
 			return true;
 		} else {
-			System.out.println("\n\tController-log: Atenção ! Pode ser que alguns dados não foram gravados.");
 			return false;
 		}
-
+		
+		
+	}
+	
+	
+	public Boolean validadorUsuarioDeletadoFalse(Long id) {
+			
+		Optional<Usuario> findUser = usuarioRepository.findAllByIdAndNaoDeletado(id, false);
+		
+		if(findUser.isPresent()) {
+			return true;
+		} else {
+			return false;
+		}
+			
+			
 	}
 
 
-	
-	
-	/**
-	 * Método de serviço validador que realiza consulta no banco de dados e faz
-	 * validação de igualdade com os dados que vem da request.
-	 * 
-	 * @param id
-	 * @return Boolean
-	 */
-	public Boolean validadedeleteFalsoUsuario(List<Long> id) {
-
-		// dados do http
-		List<Long> printList = id;
-
-		// dados do banco
-		List<Usuario> list = usuarioRepository.queryFindByIdAndNaoDeletado(id, false);
-
-		// operação para validar se os dados são iguais
-		boolean valoresIguais = list.stream()
-				.map(Usuario::getId)
-				.collect(Collectors.toList())
-				.equals(printList);
-
-		if (valoresIguais) {
-			System.out.println("\nController-log: Dados deletados com sucesso !!!");
-
-			System.out.print("\n\tDeltados:\n\t[");
-			list.forEach(i -> {
-				System.out.print("" + i + " ");
-			});
-			System.out.println("]");
-
-			return true;
-		} else {
-			System.out.println("\n\tController-log: Atenção ! Pode ser que alguns dados não foram gravados.");
-			return false;
-		}
-
-	}
-
 
 	
 	
-	
+
 
 	
 	

@@ -45,5 +45,15 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
 	 */
 	Optional<Usuario> findAllByIdAndNaoDeletado(Long id, boolean b);
 
+
+
+	/**
+	 * Validador para verificar se o valor foi excluído em modo falso.
+	 * @param id
+	 * @param b
+	 * @return
+	 */
+	Optional<Usuario> findById(Long id);
+
 	
 }

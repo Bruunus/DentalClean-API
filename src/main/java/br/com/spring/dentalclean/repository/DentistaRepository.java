@@ -64,6 +64,7 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 	 */
 	Optional<Dentista> findByCroAndNaoDeletado(Integer cro, boolean b);
 	
+<<<<<<< HEAD
 	
 	
 	/**
@@ -73,6 +74,9 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 	 * @return
 	 */
 	Iterable<Dentista> findByCroAndNaoDeletado(List<Integer> cro, boolean b);
+=======
+
+>>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
 
 
