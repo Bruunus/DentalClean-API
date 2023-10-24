@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.spring.dentalclean.model.Dentista;
-import br.com.spring.dentalclean.model.Paciente;
 
 @Repository
 public interface DentistaRepository extends CrudRepository<Dentista, Long>{
@@ -63,20 +62,6 @@ public interface DentistaRepository extends CrudRepository<Dentista, Long>{
 	 * @return
 	 */
 	Optional<Dentista> findByCroAndNaoDeletado(Integer cro, boolean b);
-	
-<<<<<<< HEAD
-	
-	
-	/**
-	 * Busca 
-	 * @param cro
-	 * @param b
-	 * @return
-	 */
-	Iterable<Dentista> findByCroAndNaoDeletado(List<Integer> cro, boolean b);
-=======
-
->>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
 
 
