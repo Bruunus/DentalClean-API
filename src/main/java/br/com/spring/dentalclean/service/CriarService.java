@@ -110,13 +110,9 @@ public class CriarService {
 		cadastro.setDataNascimento(cadastroDentistaDTO.getDataNascimento());
 		cadastro.setTelefoneResidencial(cadastroDentistaDTO.getTelefoneResidencial());
 		cadastro.setTelefoneCelular(cadastroDentistaDTO.getTelefoneCelular());
-<<<<<<< HEAD
 		cadastro.setCro(cadastroDentistaDTO.getCro());
 		cadastro.setEspecialidade(cadastroDentistaDTO.getEspecialidade());		
-=======
-		cadastro.setEspecialidade(cadastroDentistaDTO.getEspecialidade());
-		cadastro.setCro(cadastroDentistaDTO.getCro());
->>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
+
 		cadastro.setCpf(cadastroDentistaDTO.getCpf());
 		
 		dentistaRepository.save(cadastro);
