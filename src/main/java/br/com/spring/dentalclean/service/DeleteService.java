@@ -93,19 +93,12 @@ public class DeleteService {
 	 * @param cro
 	 * @return
 	 */
-<<<<<<< HEAD
-	public DentistaDTO deleteDentistaPorCroFalse(List<Integer> cro) {
 
-		List<Integer> idsHttp = cro;
-
-		Iterable<Dentista> loadRegistersDatabase = dentistaRepository.findByCroAndNaoDeletado(idsHttp, true);
-=======
 	public DentistaDTO deleteDentistaPorCroFalse(Integer cro) {
 
 		Dentista dentist = new Dentista();
 
 		Optional<Dentista> findDentist = dentistaRepository.findByCroAndNaoDeletado(cro, true);
->>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
 		if(findDentist.isPresent()) {
 			dentist.setNaoDeletado(false);
@@ -250,41 +243,7 @@ public class DeleteService {
 
 	}
 
-<<<<<<< HEAD
-	
-	
-	
-	/**
-	 * Método de serviço validador que realiza consulta no banco de dados e faz
-	 * validação de igualdade com os dados que vem da request.
-	 * 
-	 * @param id
-	 * @return Boolean
-	 */
-	public Boolean validadorDentistaDeletadoFalse(List<Integer> idHttp) {
 
-		 
-		List<Integer> printList = idHttp;
-		 
-		List<Dentista> list = dentistaRepository.queryFindByCroAndNaoDeletado(printList, false);
-
-		// operação para validar se os dados são iguais
-		boolean valoresIguais = list.stream()
-				.map(Dentista::getCro)
-				.collect(Collectors.toList())
-				.equals(printList);
-
-		if (valoresIguais) {
-			System.out.println("\nController-log: Dados deletados com sucesso !!!");
-
-			System.out.print("\n\tDeltados:\n\t[");
-			list.forEach(i -> {
-				System.out.print("" + i + " ");
-			});
-			System.out.println("]");
-=======
-
->>>>>>> ed8e8a12347cb490bdcb80451b99a11885561a9e
 
 	public Boolean validadorDentistaDeletadoFalse(Integer cro) {
 		
