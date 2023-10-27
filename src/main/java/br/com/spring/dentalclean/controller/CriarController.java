@@ -10,13 +10,11 @@ import br.com.spring.dentalclean.service.CriarService;
 
 @RestController
 @RequestMapping("/api/cadastro")
-public class CriarController {
-
-	
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class CriarController {	
 	
 	@Autowired
-	private CriarService criarService;
- 
+	private CriarService criarService; 
 	
 	
 	/**
@@ -25,6 +23,7 @@ public class CriarController {
 	 * @return Mensagem HTTP
 	 */
 	@PostMapping("/paciente")
+	@CrossOrigin(methods = RequestMethod.POST)
 	public ResponseEntity<PacienteDTO> cadastroDePaciente(@RequestBody PacienteDTO pacienteDTO) {	
 		criarService.cadastrarPaciente(pacienteDTO);
 		return ResponseEntity.ok().build();
@@ -39,6 +38,7 @@ public class CriarController {
 	 * @return Mensagem HTTP
 	 */
 	@PostMapping(value = "/dentista")
+	@CrossOrigin(methods = RequestMethod.POST)
 	public ResponseEntity<DentistaDTO> cadastroDeDentista(@RequestBody DentistaDTO cadastroDentistaDTO) {
 		
 		criarService.cadastrarDentista(cadastroDentistaDTO);		
@@ -53,6 +53,7 @@ public class CriarController {
 	 * @return Mensagem HTTP
 	 */
 	@PostMapping(value = "usuario")
+	@CrossOrigin(methods = RequestMethod.POST)
 	public ResponseEntity<UsuarioDTO> cadastroUsuario(@RequestBody UsuarioDTO usuarioDTO) {
 		
 		criarService.cadastrarUsuario(usuarioDTO);		

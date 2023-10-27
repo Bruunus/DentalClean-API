@@ -3,6 +3,8 @@ package br.com.spring.dentalclean.dto;
 import java.time.LocalDate;
 
 public class DentistaDTO {
+	
+	private Long id;
 
 	private String nomeCompleto;
 
@@ -132,6 +134,14 @@ public class DentistaDTO {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

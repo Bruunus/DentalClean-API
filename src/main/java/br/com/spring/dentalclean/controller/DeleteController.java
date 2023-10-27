@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +19,8 @@ import br.com.spring.dentalclean.dto.UsuarioDTO;
 import br.com.spring.dentalclean.service.DeleteService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DeleteController {
 	
 	
@@ -36,6 +40,7 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/delete/paciente")
+	@CrossOrigin(methods = RequestMethod.DELETE)
 	public ResponseEntity<PacienteDTO> deletePacienteForIdFalso(@RequestParam("ids") List<Long> id) {
 		
 		deleteService.deletePacientePorIdFalse(id);
@@ -59,6 +64,7 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/delete_aut/paciente")
+	@CrossOrigin(methods = RequestMethod.DELETE)
 	public ResponseEntity<PacienteDTO> deleteAutenticoIDPaciente(@RequestParam("ids") List<Long> id) {
 		
 		Boolean deletePacienteAutenticoPorId = deleteService.deletePacienteAutenticoPorId(id);
@@ -84,8 +90,9 @@ public class DeleteController {
 	 * @param id
 	 * @return Mensagem HTTP
 	 */
-	@DeleteMapping("delete/dentista")
-	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@RequestParam("ids") List<Long> id) {
+	@DeleteMapping("delete/dentista/{ids}")
+	@CrossOrigin(methods = RequestMethod.DELETE)
+	public ResponseEntity<DentistaDTO> deleteDentistaForIdFalso(@PathVariable("ids") List<Long> id) {
 		
 		deleteService.deleteDentistaPorIdFalse(id);
 		
@@ -109,6 +116,7 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("/delete_aut/dentista")
+	@CrossOrigin(methods = RequestMethod.DELETE)
 	public ResponseEntity<DentistaDTO> deleteAutenticoIdDentista(@RequestParam("ids") List<Long> id) {
 		
 		Boolean deleteDentistaAutenticoPorId = deleteService.deleteDentistaAutenticoPorId(id);
@@ -138,6 +146,7 @@ public class DeleteController {
 	 * @return Mensagem HTTP
 	 */
 	@DeleteMapping("delete/usuario")
+	@CrossOrigin(methods = RequestMethod.DELETE)
 	public ResponseEntity<UsuarioDTO> deleteUserFalse(@RequestParam("ids") List<Long> id) {
 		
 		deleteService.deleteUsuarioPorIdFalse(id);

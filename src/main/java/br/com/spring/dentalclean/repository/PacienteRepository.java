@@ -21,6 +21,7 @@ public interface PacienteRepository extends CrudRepository<Paciente, Long> {
 	Optional<Paciente> findByIdAndNaoDeletado(Long id, Boolean b);
 
 	
+	
 	/**
 	 * Busca avançada por parâmetro usanto JPQL. Retorna todos os registros de paciente que tenha
 	 * uma lista de id passado e que o campo 'naoDeletado' tenha um booleano verdadeiro ou falso.
@@ -33,6 +34,7 @@ public interface PacienteRepository extends CrudRepository<Paciente, Long> {
     List<Paciente> queryFindByIdAndNaoDeletado(@Param("id") List<Long> ids, @Param("naoDeletado") Boolean naoDeletado);
 
 
+	
 	/**
 	 * Busca todos os registros que não estão deletados.
 	 * @param pacientes

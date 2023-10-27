@@ -52,6 +52,7 @@ public class ListarService {
 		pacientes.forEach(paciente -> {
 			pacienteDTO = new PacienteDTO();
 			
+			 
 			pacienteDTO.setNomeCompleto(paciente.getNomeCompleto());
 			pacienteDTO.setDataNascimento(paciente.getDataNascimento());
 			pacienteDTO.setGenero(paciente.getGenero());
@@ -87,6 +88,7 @@ public class ListarService {
 		destistas.forEach(dentista -> {
 			dentistaDTO = new DentistaDTO();
 			
+			dentistaDTO.setId(dentista.getId());
 			dentistaDTO.setNomeCompleto(dentista.getNomeCompleto());
 			dentistaDTO.setRua(dentista.getRua());
 			dentistaDTO.setNumero(dentista.getNumero());

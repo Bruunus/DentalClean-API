@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import br.com.spring.dentalclean.service.ListarService;
 
 @RestController
 @RequestMapping("/api/read")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ExibirDadosController {
 
 	@Autowired
@@ -31,6 +34,7 @@ public class ExibirDadosController {
 	 * @return Mensagem HTTP 200
 	 */
 	@GetMapping("/pacientes")
+	@CrossOrigin(methods = RequestMethod.GET)
 	public ResponseEntity<List<PacienteDTO>> listarPacientes() {
 		List<PacienteDTO> list = listarService.listarTodosPacientes();
 		return new ResponseEntity<>(list, HttpStatus.OK);
@@ -45,6 +49,7 @@ public class ExibirDadosController {
 	 * @return Mensagem HTTP 200
 	 */
 	@GetMapping("/dentistas")
+	@CrossOrigin(methods = RequestMethod.GET)
 	public ResponseEntity<List<DentistaDTO>> listarDentistas() {
 		List<DentistaDTO> list = listarService.listarTodosDentistas();
 		return new ResponseEntity<>(list, HttpStatus.OK);
@@ -59,6 +64,7 @@ public class ExibirDadosController {
 	 * @return Mensagem HTTP 200
 	 */
 	@GetMapping("/usuarios")
+	@CrossOrigin(methods = RequestMethod.GET)
 	public ResponseEntity<List<UsuarioDTO>> listarUsuarios() {
 		List<UsuarioDTO> list = listarService.listarTodosUsuarios();
 		return new ResponseEntity<>(list, HttpStatus.OK);
@@ -75,6 +81,7 @@ public class ExibirDadosController {
 	 * @return Mensagem HTTP
 	 */
 	@GetMapping("/listar/paciente/seach")
+	@CrossOrigin(methods = RequestMethod.GET)
 	public ResponseEntity<?> listarPacientePorNomeString(@RequestParam("nome") String nome) {
 		
 		List<PacienteDTO> pacienteDTO = listarService.listaPacientePorCadeiraDeCaracter(nome);
@@ -102,6 +109,7 @@ public class ExibirDadosController {
 	 * @return Mensagem HTTP
 	 */
 	@GetMapping("/listar/dentista/seach")
+	@CrossOrigin(methods = RequestMethod.GET)
 	public ResponseEntity<?> listarDentistaPorNomeString(@RequestParam("nome") String nome) {
 		
 		List<DentistaDTO> dentistaDTO = listarService.listaDentistaPorCadeiaDeCaracter(nome);
