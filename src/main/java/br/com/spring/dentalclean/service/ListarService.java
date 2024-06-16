@@ -157,6 +157,7 @@ public class ListarService {
 				
 				pacienteDTO = new PacienteDTO();
 				
+				pacienteDTO.setId(data.getId_cadastro_paciente());
 				pacienteDTO.setNomeCompleto(data.getNomeCompleto());
 				pacienteDTO.setDataNascimento(data.getDataNascimento());
 				pacienteDTO.setGenero(data.getGenero());
@@ -202,6 +203,7 @@ public class ListarService {
 				
 				dentistaDTO = new DentistaDTO();
 
+				dentistaDTO.setId(data.getId());
 				dentistaDTO.setNomeCompleto(data.getNomeCompleto());
 				dentistaDTO.setRua(data.getRua());
 				dentistaDTO.setNumero(data.getNumero());
